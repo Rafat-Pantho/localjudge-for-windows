@@ -13,6 +13,6 @@ int main(){
     ll a,b;
     cin>>a>>b;
     CustomSwap(a,b);
-    cout<<b<<" "<<a;
+    cout<<a<<" "<<b;
     return 0;
 }

@@ -76,6 +76,8 @@ python -u "localjudge.py" -path <the_lab_no\lab_task_no>
 python -u "localjudge.py" -path "Lab 1\Task B"
 ```
 
+###DISCLAIMER
+### => Your terminal path should be same as the `localjudge.py` directory!!!
 ---
 
 ## 🧾 Output Example

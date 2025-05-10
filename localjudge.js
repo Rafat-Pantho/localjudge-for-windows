@@ -6,17 +6,18 @@ const { spawn, execSync } = require("child_process");
 const normalize = (text) =>
   text.trim().split(/\r?\n/).map(line => line.trim()).filter(Boolean).join("\n");
 
-function getMemoryMB(pid) {
+function getMemoryKB(pid) {
   try {
     const output = execSync(`wmic process where ProcessId=${pid} get WorkingSetSize /value`, { stdio: ["pipe", "pipe", "ignore"] });
     const match = output.toString().match(/WorkingSetSize=(\d+)/);
     if (match) {
       const bytes = parseInt(match[1], 10);
-      return Math.round(bytes / 1024 / 1024);
+      return Math.round(bytes / 1024);
     }
   } catch (e) {}
   return 0;
 }
+
 
 function execWithMetrics(command, args = [], options = {}) {
   return new Promise((resolve) => {
@@ -39,7 +40,7 @@ function execWithMetrics(command, args = [], options = {}) {
     child.stdin.end();
 
     const memoryInterval = setInterval(() => {
-      const mem = getMemoryMB(child.pid);
+      const mem = getMemoryKB(child.pid);
       peakMemory = Math.max(peakMemory, mem);
     }, 50); // every 50ms
 
@@ -124,7 +125,7 @@ async function judge(taskPath) {
       const output = normalize(result.stdout);
       let verdict = result.status === "OK" ? (output === expected ? "ACCEPTED" : "WRONG ANSWER") : result.status;
 
-      const msg = `Test ${i + 1}: ${verdict} [${result.time}ms, ${result.memory}MB]`;
+      const msg = `Test ${i + 1}: ${verdict} [${result.time}ms, ${result.memory}KB]`;
       console.log(msg);
 
       if (verdict !== "ACCEPTED") finalVerdict = verdict;

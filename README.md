@@ -11,7 +11,7 @@ It simulates an online judge:
 
 ---
 
-## ✅ Requirements
+## ✅ Requirements(For localjudge.py)
 
 ### Python Environment
 - Python 3.6 or newer
@@ -19,6 +19,16 @@ It simulates an online judge:
 
 ```bash
 pip install psutil pyyaml
+```
+## ✅ Requirements(For localjudge.js)
+
+### Python Environment
+- Python 3.6 or newer
+- Install dependencies using:
+
+```bash
+npm install js-yaml
+```
 ````
 
 ### Optional (for C++ submissions)
@@ -66,6 +76,8 @@ memory_limit: 256   # in MB
 2. Place your task folder as described above
 3. Run the judge:
 
+###Python file:
+
 ```bash
 python -u "localjudge.py" -path <the_lab_no\lab_task_no>
 ```
@@ -75,6 +87,19 @@ python -u "localjudge.py" -path <the_lab_no\lab_task_no>
 ```bash
 python -u "localjudge.py" -path "Lab 1\Task B"
 ```
+
+###Javascript file:
+
+```bash
+node localjudge.js -path <the_lab_no\lab_task_no>
+```
+
+##Example
+
+```bash
+node localjudge.js -path "Lab 1\Task A"
+```
+
 
 ###DISCLAIMER
 ### => Your terminal path should be same as the `localjudge.py` directory!!!

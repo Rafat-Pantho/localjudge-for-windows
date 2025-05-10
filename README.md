@@ -113,8 +113,3 @@ mycode: WRONG ANSWER
 MIT License. Use freely in academic or personal projects.
 
 ```
-
----
-
-Let me know if you want this bundled into a `.zip` or scaffolded repo with sample test cases.
-```

@@ -24,5 +24,3 @@ for i in range(n):
                     size+=1
         size_keeper.append(size)
 
-# sir sorry. To prepare for refer exam I couldn't study graphs problem.
-# i learnt bfs in 2-1. I just implemented that here.

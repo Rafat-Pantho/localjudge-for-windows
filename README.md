@@ -22,8 +22,8 @@ pip install psutil pyyaml
 ```
 ## ✅ Requirements(For localjudge.js)
 
-### Python Environment
-- Python 3.6 or newer
+### Node.js Environment
+- Install Node.js
 - Install dependencies using:
 
 ```bash

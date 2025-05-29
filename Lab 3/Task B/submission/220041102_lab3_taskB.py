@@ -24,3 +24,12 @@ for i in range(n):
                     size+=1
         size_keeper.append(size)
 
+summer = sum (size_keeper)
+
+final_answer = 0
+
+for i in size_keeper:
+    summer -= i
+    final_answer += i*summer
+    
+print(final_answer)

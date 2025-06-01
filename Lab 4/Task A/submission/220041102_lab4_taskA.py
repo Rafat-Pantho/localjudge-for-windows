@@ -15,9 +15,12 @@ def my_custome_dijkastra(n,edges_with_time_delay):
     heapq.heappush(q,heap_pair(1,0))
     
     while q:
-        u = heapq.heappop(q).node
+        temp_container = heapq.heappop(q)
+        u = temp_container.node
+        d = temp_container.distance
         
-        if visited[u]:continue
+        
+        if visited[u] or dist[u]<d:continue
         
         visited[u]=True
         

@@ -1,26 +1,30 @@
-from collections import deque
+import heapq
+
+class heap_pair:
+    def __init__(self,node,distance):
+        self.node = node
+        self.distance = distance
+    def __lt__(self,other):
+        return self.distance<other.distance
 def my_custome_dijkastra(n,edges_with_time_delay):
     dist =[float('inf')]*(n+1)
-    visited = [0]*(n+1)
+    visited = [False]*(n+1)
     dist[1]=0
     
-    q = deque()
-    q.append(1)
-    visited[1]=1
+    q = []
+    heapq.heappush(q,heap_pair(1,0))
     
     while q:
-        u = q.popleft()
-        visited[u]=0
+        u = heapq.heappop(q).node
+        
+        if visited[u]:continue
+        
+        visited[u]=True
         
         for c, time_delay in edges_with_time_delay[u]:
             if dist[c]>dist[u]+time_delay:
                 dist[c]= dist[u]+time_delay
-                if not visited[c]:
-                    if q and dist[c]< dist[q[0]]:
-                        q.appendleft(c)
-                    else:
-                        q.append(c)
-                    visited[c] = 1
+                heapq.heappush(q,heap_pair(c,dist[c]))
     return dist[1:]
 n,m = map(int,input().split())
 

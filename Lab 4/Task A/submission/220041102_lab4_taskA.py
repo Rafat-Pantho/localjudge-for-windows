@@ -8,7 +8,6 @@ class heap_pair:
         return self.distance<other.distance
 def my_custome_dijkastra(n,edges_with_time_delay):
     dist =[float('inf')]*(n+1)
-    visited = [False]*(n+1)
     dist[1]=0
     
     q = []
@@ -19,10 +18,7 @@ def my_custome_dijkastra(n,edges_with_time_delay):
         u = temp_container.node
         d = temp_container.distance
         
-        
-        if visited[u] or dist[u]<d:continue
-        
-        visited[u]=True
+        if dist[u]<d:continue
         
         for c, time_delay in edges_with_time_delay[u]:
             if dist[c]>dist[u]+time_delay:
